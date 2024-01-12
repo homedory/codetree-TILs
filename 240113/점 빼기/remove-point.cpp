@@ -16,7 +16,7 @@ int main() {
     for (int i = 0; i < m; i++) {
         int k;
         cin >> k;
-        set <pair<int,int>>::iterator it = p.lower_bound(make_pair(k,-1000000000));
+        set <pair<int,int>>::iterator it = p.lower_bound(make_pair(k,-1));
         if (it == p.end()) {
             cout << "-1 -1\n";
             continue;

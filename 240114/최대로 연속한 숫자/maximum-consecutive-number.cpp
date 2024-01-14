@@ -15,7 +15,7 @@ int main() {
         int x;
         cin >> x;
 
-        set<pair<int,int>>::iterator it = consec.upper_bound(make_pair(x,x));
+        set<pair<int,int>>::iterator it = consec.upper_bound(make_pair(x,n));
         it--;
         int s = it->first, e = it->second;
         consec.erase(make_pair(s, e));

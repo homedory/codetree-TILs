@@ -1,10 +1,12 @@
 #include <iostream>
 #include <queue>
+#include <vector>
+#include <functional>
 using namespace std;
 
 int main() {
     int n;
-    priority_queue<int> pq;
+    priority_queue<int, vector<int>, greater<int>> pq;
 
     cin >> n;
     for (int i = 0; i < n; i++) {
@@ -16,12 +18,12 @@ int main() {
                 cout << "0\n";
             }
             else {
-                cout << -pq.top() << "\n";
+                cout << pq.top() << "\n";
                 pq.pop();
             }
         }
         else {
-            pq.push(-x);
+            pq.push(x);
         }
     }
     return 0;

@@ -1,13 +1,17 @@
 #include <iostream>
 #include <queue>
+#include <cmath>
 using namespace std;
 
 struct compare {
     bool operator()(pair<int,int> a, pair<int,int> b) {
-        if (a.first * a.first + a.second * a.second == b.first * b.first + b.second * b.second) {
-            return a.second > b.second;
+        if (abs(a.first) + abs(a.second) == abs(b.first) + abs(b.second)) {
+            if (a.first == b.first) {
+                return a.second > b.second;
+            }
+            return a.first > b.first;
         }
-        return a.first * a.first + a.second * a.second > b.first * b.first + b.second * b.second;
+        return abs(a.first) + abs(a.second) > abs(b.first) + abs(b.second);
     }
 };
 

@@ -74,7 +74,7 @@ int main() {
         if (x == 1) {
             cin >> i;
             if (nodes.find(i) != nodes.end())
-                node_i = node_i;
+                node_i = nodes[i];
             else {
                 node_i = new Node(i);
                 nodes[i] = node_i;
@@ -123,7 +123,7 @@ int main() {
         else if (x == 4) {
             cin >> i;
             if (nodes.find(i) != nodes.end())
-                node_i = node_i;
+                node_i = nodes[i];
             else {
                 node_i = new Node(i);
                 nodes[i] = node_i;

@@ -16,33 +16,19 @@ void connect(Node *s, Node *u) {
         u->prev = s;
 }
 
-void PopAndInsertPrev(Node *s, Node *e, Node *v) {
-    connect(s->prev, e->next);
-    s->prev = e->next = nullptr;
 
-    connect(v->prev, s);
-    connect(e, v);
-}
+void Swap(Node *a, Node *b, Node *c, Node *d) {
+    Node *prevA = a->prev;
+    Node *prevC = c->prev;
 
-void PopAndInsertNext(Node *s, Node *e, Node *v) {
-    connect(s->prev, e->next);
-    s->prev = e->next = nullptr;
+    connect(prevA, c);
+    connect(prevC, a);
 
-    connect(e, v->next);
-    connect(v, s);
-}
+    Node *nextB = b->next;
+    Node *nextD = d->next;
 
-void PopAndSwap(Node *a, Node *b, Node *c, Node *d) {
-    if (a->prev == d) {
-        Node *c_prev = c->prev;
-        PopAndInsertPrev(c, d, b->next);
-        PopAndInsertNext(a, b, c_prev);
-    }
-    else {
-        Node *a_prev = a->prev;
-        PopAndInsertPrev(a, b, d->next);
-        PopAndInsertNext(c, d, a_prev);
-    }
+    connect(b, nextD);
+    connect(d, nextB);
 }
 
 
@@ -54,7 +40,7 @@ int main() {
     cin >> Q;
 
     nodes[0] = new Node(0);
-    for (int i = 1; i <= N + 1; i++) {
+    for (int i = 1; i <= N; i++) {
         Node *node = new Node(i);
         nodes[i] = node;
         connect(nodes[i-1], node);
@@ -63,12 +49,12 @@ int main() {
     for (int i = 0; i < Q; i++) {
         int a, b, c, d;
         cin >> a >> b >> c >> d;
-        PopAndSwap(nodes[a], nodes[b], nodes[c], nodes[d]);
+        Swap(nodes[a], nodes[b], nodes[c], nodes[d]);
     }
 
 
     Node *ptr = nodes[0]->next;
-    while(ptr != nullptr && ptr->data != N + 1) {
+    while(ptr != nullptr) {
         cout << ptr->data << " ";
         ptr = ptr->next;
     }

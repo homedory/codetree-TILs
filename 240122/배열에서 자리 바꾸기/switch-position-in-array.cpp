@@ -33,9 +33,16 @@ void PopAndInsertNext(Node *s, Node *e, Node *v) {
 }
 
 void PopAndSwap(Node *a, Node *b, Node *c, Node *d) {
-    Node *a_prev = a->prev;
-    PopAndInsertPrev(a, b, d->next);
-    PopAndInsertNext(c, d, a_prev);
+    if (a->prev == d) {
+        Node *d_prev = d->prev;
+        PopAndInsertPrev(c, d, b->next);
+        PopAndInsertNext(a, b, d_prev);
+    }
+    else {
+        Node *a_prev = a->prev;
+        PopAndInsertPrev(a, b, d->next);
+        PopAndInsertNext(c, d, a_prev);
+    }
 }
 
 

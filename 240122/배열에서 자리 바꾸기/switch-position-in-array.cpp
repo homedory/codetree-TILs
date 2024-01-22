@@ -60,7 +60,7 @@ int main() {
     }
 
 
-    Node *ptr = nodes[1];
+    Node *ptr = nodes[0]->next;
     while(ptr != nullptr && ptr->data != N + 1) {
         cout << ptr->data << " ";
         ptr = ptr->next;

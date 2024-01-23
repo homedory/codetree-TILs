@@ -17,7 +17,7 @@ int main() {
         if (s.find(prefix_sum[i] - k) != s.end()) {
             ans++;
         }
-        s.insert(i);
+        s.insert(prefix_sum[i]);
     }
 
     cout << ans;

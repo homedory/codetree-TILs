@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-#define MAX_N 105
+#define MAX_N 505
 
 int arr[MAX_N][MAX_N], sum[MAX_N][MAX_N];
 
@@ -16,7 +16,7 @@ int main() {
     }
 
     for (int i = 1; i <= n; i++) {
-        for (int j =1; j <= n; j++) {
+        for (int j = 1; j <= n; j++) {
             sum[i][j] = sum[i-1][j] + sum[i][j-1] - sum[i-1][j-1] + arr[i][j];
         }
     }

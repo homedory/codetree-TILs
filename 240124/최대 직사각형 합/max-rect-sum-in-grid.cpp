@@ -25,7 +25,7 @@ int main() {
         for (int j = i; j <= n; j++) {
             int dp[MAX_N];
             dp[0] = 0;
-            int max_sum = 0;
+            int max_sum = -300000;
             for (int k = 1; k <= n; k++) {
                 int value = prefix_sum[j][k] - prefix_sum[i-1][k] - prefix_sum[j][k-1] + prefix_sum[i-1][k-1]; 
                 dp[k] = max(dp[k-1] + value, value);

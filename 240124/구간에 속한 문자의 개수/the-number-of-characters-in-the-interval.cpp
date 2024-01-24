@@ -18,7 +18,7 @@ int main() {
     cin >> n >> m >> k;
 
     for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= n; j++) {
+        for (int j = 1; j <= m; j++) {
             char c;
             cin >> c;
             arr[i][j][c - 'a'] = 1;

@@ -52,7 +52,7 @@ int main() {
     }
 
     int ans = 0;
-    for (int i = 1; i < N; i++) {
+    for (int i = 1; i <= N; i++) {
         for (int j = 0; j < 3; j++) {
             int a = (j + 1) % 3;
             int b = (j + 2) % 3;

@@ -13,7 +13,7 @@ int main() {
         cin >> arr[i];
     }
 
-    arr[0] = 0;
+    L[0] = 0;
     for (int i = 1; i <= N; i++) {
         if (arr[i] == 'C') {
             L[i] = L[i-1] + 1;
@@ -23,7 +23,7 @@ int main() {
         }
     }
 
-    arr[N+1] = 0;
+    R[N+1] = 0;
     for (int i = N; i >= 1; i--) {
         if (arr[i] == 'W') {
             R[i] = R[i+1] + 1;

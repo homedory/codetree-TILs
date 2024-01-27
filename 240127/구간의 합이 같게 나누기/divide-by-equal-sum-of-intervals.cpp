@@ -42,6 +42,12 @@ int main() {
             R[i]++;
     }
 
+
+    if (total_sum == 0) {
+        cout << (n - 1) * (n - 2) * (n - 3) / 6;
+        return 0;
+    }
+
     long long ans = 0;
     for (int i = 0; i < v.size(); i++) {
         int idx = v[i];
@@ -52,6 +58,6 @@ int main() {
 
     cout << ans;
 
-    
+
     return 0;
 }

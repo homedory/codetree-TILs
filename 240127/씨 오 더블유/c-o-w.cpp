@@ -5,7 +5,8 @@ using namespace std;
 
 int main() {
     int N;
-    char arr[MAX_N], L[MAX_N], R[MAX_N];
+    char arr[MAX_N];
+    int L[MAX_N], R[MAX_N];
 
     cin >> N;
     

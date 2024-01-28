@@ -18,14 +18,20 @@ int main() {
 
     sort(v.begin(), v.end());
 
-    int sum = 0, ans = 0;
+    int sum = 0, max_sum = 0, cnt = 0;
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < v.size(); i++) {
         sum += v[i].second;
-        ans = max(ans, sum);
+        if (sum > max_sum) {
+            cnt = 1;
+            max_sum = sum;
+        }
+        else if (sum == max_sum) {
+            cnt++;
+        }
     }
 
-    cout << ans;
+    cout << cnt;
 
 
     return 0;

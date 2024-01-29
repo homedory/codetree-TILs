@@ -2,7 +2,7 @@
 #include <vector>
 #include <tuple>
 #include <algorithm>
-#include <set>
+#include <unordered_set>
 using namespace std;
 
 #define MAX_N 100005
@@ -24,7 +24,7 @@ int main() {
 
     sort(points.begin(), points.end());
 
-    set <int> s;
+    unordered_set <int> s;
     int prev_x;
     int total_len = 0;
 

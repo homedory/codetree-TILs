@@ -28,8 +28,6 @@ int main() {
     int prev_x;
     int total_len = 0;
 
-    // tie(prev_x, ignore, ignore) = points[0];
-
     for (int i = 0; i < points.size(); i++) {
         int x, idx, v;
         tie(x, idx, v) = points[i];

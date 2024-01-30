@@ -24,7 +24,7 @@ int main() {
         }
     }
 
-    int ans = 0;
+    long long ans = 0;
     
     for (int i = 1; i < n - 2; i++) {
         if (str[i-1] == '(' && str[i] == '(') {

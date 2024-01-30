@@ -34,6 +34,10 @@ int main() {
         }
     }
 
+    if (stop_point[stop_point.size() - 1] != n) {
+        stop_point.push_back(n);
+    }
+    
     long long total_cost = 0;
 
     for (int i = 1; i < stop_point.size(); i++) {

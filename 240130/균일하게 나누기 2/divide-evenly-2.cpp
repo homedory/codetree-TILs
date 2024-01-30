@@ -57,8 +57,8 @@ int main() {
 
     int ans = MAX_N;
 
-    for (int i = 1; i < x_len; i++) {
-        for (int j = 1; j < y_len; j++) {
+    for (int i = 1; i <= x_len; i++) {
+        for (int j = 1; j <= y_len; j++) {
             int a = prefix_sum[i][j];
             int b = prefix_sum[x_len][j] - a;
             int c = prefix_sum[i][y_len] - a;
@@ -69,6 +69,6 @@ int main() {
 
     cout << ans;
 
-    
+
     return 0;
 }

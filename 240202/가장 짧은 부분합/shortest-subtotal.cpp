@@ -20,7 +20,7 @@ int main() {
         x++;
     }
 
-    int ans = x;
+    int ans = x + 1;
     for (int i = x; i < n; i++) {
         sum_value += arr[i];
         while(j + 1 <= i && sum_value - arr[j] >= s) {
@@ -32,8 +32,8 @@ int main() {
 
     }
 
-    if (ans == n) {
-        cout << (sum_value >= s ? ans : -1);
+    if (ans == n + 1) {
+        cout << -1;
     }
     else {
         cout << ans;

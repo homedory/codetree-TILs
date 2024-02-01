@@ -23,8 +23,8 @@ int main() {
     int ans = x;
     for (int i = x; i < n; i++) {
         sum_value += arr[i];
-        while(j + 1 <= i && sum_value - arr[j + 1] >= s) {
-            sum_value -= arr[j + 1];
+        while(j + 1 <= i && sum_value - arr[j] >= s) {
+            sum_value -= arr[j];
             j++;
         }
 

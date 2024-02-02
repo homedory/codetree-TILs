@@ -17,7 +17,7 @@ int main() {
     int j = 0;
     int ans = 0;
     for (int i = 1; i <= n; i++) {
-        while(j + 1 < n && check[arr[j + 1]] == 0) {
+        while(j + 1 <= n && check[arr[j + 1]] == 0) {
             check[arr[j + 1]] = 1;
             j++;
         }

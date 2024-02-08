@@ -22,11 +22,16 @@ int main() {
     int s = 0;
     int ans = 0;
 
-    for (int e = n; e > s; e--) {
-        while(s + 1 < e && v[s + 1] + v[e] <= k) {
-            s++;
+    for (int e = n; e > 0; e--) {
+        if (s >= e) {
+            ans += e - 1;
         }
-        ans += s;
+        else {
+            while(s + 1 < e && v[s + 1] + v[e] <= k) {
+                s++;
+            }
+            ans += s;    
+        }
     }
 
     cout << ans;

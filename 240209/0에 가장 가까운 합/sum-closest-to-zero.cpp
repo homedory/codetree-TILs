@@ -11,13 +11,13 @@ int main() {
 
     cin >> n;
 
-    for (int i = 1; i <= n; i++) {
+    for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
 
     sort(arr, arr + n);
 
-    int s = 1, e = n;
+    int s = 0, e = n - 1;
     int ans = 2000000000;
 
     while(s < e) {

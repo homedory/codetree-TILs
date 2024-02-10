@@ -15,7 +15,7 @@ int main() {
     for (int i = 0; i < str.length(); i++) {
         while (j + 1 < str.length() && (cnt.size() < k || cnt.find(str[j + 1]) != cnt.end())) {
             j++;
-            cnt[str[j + 1]] += 1;
+            cnt[str[j]] += 1;
         }
 
         ans = max(ans, j - i + 1);

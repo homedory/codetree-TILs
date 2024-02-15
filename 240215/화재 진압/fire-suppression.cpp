@@ -36,7 +36,7 @@ int main() {
     }
 
     R[pos.size()] = 2000000000;
-    for (int i = pos.size() - 1; i >= 0; i--) {
+    for (int i = pos.size() - 1; i >= 1; i--) {
         if (pos[i].second == 1) {
             R[i] = pos[i].first;
         }

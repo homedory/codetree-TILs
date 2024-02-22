@@ -33,7 +33,7 @@ int main() {
     cin >> m;
     cin >> a >> b;
 
-    int max_cnt = 0, min_cnt = m;
+    int max_cnt = -1000000000, min_cnt = 1000000000;
 
     for (long long i = a; i <= b; i++) {
         int cnt = BinarySearchCnt(i);

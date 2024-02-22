@@ -2,14 +2,14 @@
 #include <algorithm>
 using namespace std;
 
-int m;
+long long m;
 
-int BinarySearchCnt(int x) {
-    int l = 1, r = m;
+int BinarySearchCnt(long long x) {
+    long long l = 1, r = m;
     int cnt = 1;
 
     while(l <= r) {
-        int mid = (l + r) / 2;
+        long long mid = (l + r) / 2;
 
         if (mid == x)
             break;
@@ -28,14 +28,14 @@ int BinarySearchCnt(int x) {
 }
 
 int main() {
-    int a, b;
+    long long a, b;
 
     cin >> m;
     cin >> a >> b;
 
-    int max_cnt = 0, min_cnt= m;
+    int max_cnt = 0, min_cnt = m;
 
-    for (int i = a; i <= b; i++) {
+    for (long long i = a; i <= b; i++) {
         int cnt = BinarySearchCnt(i);
 
         max_cnt = max(max_cnt, cnt);

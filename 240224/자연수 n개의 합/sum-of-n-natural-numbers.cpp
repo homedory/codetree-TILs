@@ -7,7 +7,7 @@ int main() {
 
     cin >> s;
 
-    long long l = 1, r = s;
+    long long l = 1, r = 2000000000;
 
     long long ans = 0;
     while(l <= r) {
@@ -24,6 +24,6 @@ int main() {
 
     cout << ans;
 
-    
+
     return 0;
 }

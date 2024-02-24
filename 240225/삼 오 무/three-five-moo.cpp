@@ -12,22 +12,22 @@ int main() {
     cin >> N;
 
     long long l = 1, r = 4000000000;
+    long long ans = 0;
 
     while(l <= r) {
         long long mid = (l + r) / 2;
 
-        if (GetNumber(mid) == N) {
-            cout << mid;
-            break;
-        }
-
-        if (GetNumber(mid) < N) {
+        if (GetNumber(mid) <= N) {
             l = mid + 1;
+            ans = max(ans, mid);
         }
         else {
             r = mid - 1;
         }
     }
-    
+
+    cout << ans;
+
+
     return 0;
 }

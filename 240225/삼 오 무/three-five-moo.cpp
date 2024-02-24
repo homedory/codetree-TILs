@@ -12,17 +12,17 @@ int main() {
     cin >> N;
 
     long long l = 1, r = 4000000000;
-    long long ans = 0;
+    long long ans = 4000000000;
 
     while(l <= r) {
         long long mid = (l + r) / 2;
 
-        if (GetNumber(mid) <= N) {
-            l = mid + 1;
-            ans = max(ans, mid);
+        if (GetNumber(mid) >= N) {
+            r = mid - 1;
+            ans = min(ans, mid);
         }
         else {
-            r = mid - 1;
+            l = mid + 1;
         }
     }
 

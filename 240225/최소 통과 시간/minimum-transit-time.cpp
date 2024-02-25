@@ -13,8 +13,8 @@ int main() {
         cin >> arr[i];
     }
 
-    int l = 1, r = 1000000000;
-    int ans = 1000000000;
+    int l = 1, r = 2000000000;
+    int ans = 2000000000;
 
     while(l <= r) {
         int mid = (l + r) / 2;

@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
     int n, m;
-    int arr[MAX_N];
+    long long arr[MAX_N];
 
     cin >> n >> m;
 
@@ -13,11 +13,11 @@ int main() {
         cin >> arr[i];
     }
 
-    int l = 1, r = 2000000000;
-    int ans = 2000000000;
+    long long l = 1, r = 2000000000;
+    long long ans = 2000000000;
 
     while(l <= r) {
-        int mid = (l + r) / 2;
+        long long mid = (l + r) / 2;
 
         long long cnt = 0;
 

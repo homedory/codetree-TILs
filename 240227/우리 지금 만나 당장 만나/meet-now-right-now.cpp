@@ -9,7 +9,7 @@ int v[MAX_N];
 long long x[MAX_N];
 
 bool IsPossible(long long t) {
-    long long start = LONG_MIN, end = LONG_MAX;
+    long long start = LLONG_MIN, end = LLONG_MAX;
 
     for (int i = 0; i < n; i++) {
         start = max(start, x[i] - v[i] * t);
@@ -31,7 +31,7 @@ int main() {
         cin >> v[i];
     }
 
-    long long l = 1, r = LONG_MAX;
+    long long l = 1, r = LLONG_MAX;
     long long t;
 
     while(l <= r) {

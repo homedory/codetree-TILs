@@ -19,7 +19,7 @@ bool IsPossible(int d) {
         else {
             idx = i;
             bus_cnt++;
-            people_cnt = 0;
+            people_cnt = 1;
         }
     }
 

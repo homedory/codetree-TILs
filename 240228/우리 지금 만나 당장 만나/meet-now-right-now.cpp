@@ -10,7 +10,7 @@ int v[MAX_N], x[MAX_N];
 bool IsPossible(double t) {
     double start = x[0] - v[0] * t, end = x[0] + v[0] * t;
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 1; i < n; i++) {
         start = max(start, x[i] - v[i] * t);
         end = min(end, x[i] + v[i] * t);
     }
@@ -32,18 +32,18 @@ int main() {
     double l = 0, r = 1000000000;
     double ans;
 
-    while(l <= r) {
+    for (int i = 0; i < 100; i++) {
         long long mid = (l + r) / 2;
 
         if (IsPossible(mid)) {
-            r = mid - 1;
+            r = mid;
             ans = mid;
         }
         else {
-            l = mid + 1;
+            l = mid;
         }
     }
-    
+
     cout << fixed;
     cout.precision(4);
 

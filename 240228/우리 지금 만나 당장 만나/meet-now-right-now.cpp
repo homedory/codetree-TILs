@@ -33,7 +33,7 @@ int main() {
     double ans;
 
     for (int i = 0; i < 100; i++) {
-        long long mid = (l + r) / 2;
+        double mid = (l + r) / 2;
 
         if (IsPossible(mid)) {
             r = mid;

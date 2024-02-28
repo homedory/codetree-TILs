@@ -49,7 +49,7 @@ int main() {
     }
 
     int l = 0, r = N;
-    int ans = 0;
+    int ans = -1;
 
     while(l <= r) {
         int mid = (l + r) / 2;

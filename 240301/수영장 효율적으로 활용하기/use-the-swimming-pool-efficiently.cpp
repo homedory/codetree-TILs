@@ -12,6 +12,9 @@ bool IsPossible(int t) {
     int sum = 0;
 
     for (int i = 0; i < n; i++) {
+        if (T[i] >= t)
+            return false;
+
         if (sum + T[i] <= t) {
             sum += T[i];
         }

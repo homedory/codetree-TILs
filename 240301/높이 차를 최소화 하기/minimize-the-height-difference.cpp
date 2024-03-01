@@ -30,13 +30,14 @@ bool dfs(int x, int y, int min_h, int max_h) {
 }
 
 bool IsPossible(int d) {
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            visited[i][j] = false;
-        }
-    }
 
     for (int i = 1; i + d <= 500; i++) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                visited[i][j] = false;
+            }
+        }
+        
         if (board[1][1] >= i && board[1][1] <= i + d) {
             if (dfs(1, 1, i, i + d)) {
                 return true;

@@ -22,6 +22,7 @@ bool dfs(int x, int y, int min_h, int max_h, int d) {
                 if (dfs(nx, ny, min(min_h, board[nx][ny]), max(max_h, board[nx][ny]), d)) {
                     return true;
                 }
+                visited[nx][ny] = false;
             }
         }
     }

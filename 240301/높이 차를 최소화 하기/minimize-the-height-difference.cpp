@@ -7,7 +7,7 @@ bool visited[105][105];
 int dx[4] = {-1, 1, 0, 0};
 int dy[4] = {0, 0, -1, 1};
 
-bool dfs(int x, int y, int min_h, int max_h) {
+bool dfs(int x, int y, int min_h, int max_h, int d) {
     visited[x][y] = true;
 
     if (x == n && y == m)
@@ -18,8 +18,8 @@ bool dfs(int x, int y, int min_h, int max_h) {
         int ny = y + dy[i];
 
         if (nx > 0 && nx <= n && ny > 0 && ny <= m && visited[nx][ny] == false) {
-            if (board[nx][ny] >= min_h && board[nx][ny] <= max_h) {
-                if (dfs(nx, ny, min_h, max_h)) {
+            if (board[nx][ny] >= max_h - d && board[nx][ny] <= min_h + d) {
+                if (dfs(nx, ny, min(min_h, board[nx][ny]), max(max_h, board[nx][ny]), d)) {
                     return true;
                 }
             }
@@ -31,21 +31,14 @@ bool dfs(int x, int y, int min_h, int max_h) {
 
 bool IsPossible(int d) {
 
-    for (int i = 1; i + d <= 500; i++) {
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= m; j++) {
-                visited[i][j] = false;
-            }
-        }
-        
-        if (board[1][1] >= i && board[1][1] <= i + d) {
-            if (dfs(1, 1, i, i + d)) {
-                return true;
-            }
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            visited[i][j] = false;
         }
     }
+
+    return dfs(1,1, board[1][1], board[1][1], d);
     
-    return false;
 }
 
 int main() {

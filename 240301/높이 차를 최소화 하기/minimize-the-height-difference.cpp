@@ -37,8 +37,10 @@ bool IsPossible(int d) {
     }
 
     for (int i = 1; i + d <= 500; i++) {
-        if (dfs(1, 1, i, i + d)) {
-            return true;
+        if (board[1][1] >= i && board[1][1] <= i + d) {
+            if (dfs(1, 1, i, i + d)) {
+                return true;
+            }
         }
     }
     

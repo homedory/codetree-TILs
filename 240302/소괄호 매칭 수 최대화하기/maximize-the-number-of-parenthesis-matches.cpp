@@ -27,7 +27,7 @@ int main() {
         string str = arr;
 
         int open = 0, close = 0;
-        for (int j = 0; j < str.length(); j++) {
+        for (int j = 0; j < (int) str.length(); j++) {
             if (str[j] == '(') {
                 open++;
             }

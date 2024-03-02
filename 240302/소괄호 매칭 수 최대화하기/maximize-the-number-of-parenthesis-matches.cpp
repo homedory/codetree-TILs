@@ -4,25 +4,27 @@
 using namespace std;
 
 #define MAX_N 100005
+#define MAX_S 500005
 
 bool cmp(pair<int,int> a, pair<int,int> b) {
     long long sum1 = (long long) a.first * b.second;
-    long long sum2 = (long long ) b.first * a.second;
+    long long sum2 = (long long) b.first * a.second;
 
     return sum1 >= sum2;
 }
 
 int main() {
     int n;
-    string str;
     pair<int,int> s[MAX_N];
     long long ans = 0;
-
+    char arr[MAX_N];
 
     cin >> n;
 
     for (int i = 0; i < n; i++) {
-        cin >> str;
+        cin >> arr;
+
+        string str = arr;
 
         int open = 0, close = 0;
         for (int j = 0; j < str.length(); j++) {

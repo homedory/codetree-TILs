@@ -31,7 +31,7 @@ int main() {
 
     int j = 0, cnt = 0;
     for (int i = 0; i < N; i++) {
-        if (B[j] < A[i]) {
+        if (j < N && B[j] < A[i]) {
             cnt++;
             j++;
         }

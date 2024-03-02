@@ -5,57 +5,51 @@ using namespace std;
 
 #define MAX_N 100005
 
-int getScore(string s) {
-    int R[500005];
-    for (int i = 0; i <= s.length(); i++) {
-        R[i] = 0;
-    }
+bool cmp(pair<int,int> a, pair<int,int> b) {
+    long long sum1 = (long long) a.first * b.second;
+    long long sum2 = (long long ) b.first * a.second;
 
-    for (int i = s.length() - 1; i >= 0; i--) {
-        if (s[i] == ')') {
-            R[i] = R[i + 1] + 1;
-        }
-        else {
-            R[i] = R[i + 1];
-        }
-    }
-
-    int sum = 0;
-    for (int i = 0; i < s.length(); i++) {
-        if (s[i] == '(') {
-            sum += R[i + 1];
-        }
-    }
-
-    return sum;
-}
-
-bool cmp(string a, string b) {
-    string concat1 = a + b;
-    string concat2 = b + a;
-
-    return getScore(concat1) >= getScore(concat2);
+    return sum1 >= sum2;
 }
 
 int main() {
     int n;
-    string str[MAX_N];
+    string str;
+    pair<int,int> s[MAX_N];
+    long long ans = 0;
+
+
     cin >> n;
 
     for (int i = 0; i < n; i++) {
-        cin >> str[i];
+        cin >> str;
+
+        int open = 0, close = 0;
+        for (int j = 0; j < str.length(); j++) {
+            if (str[j] == '(') {
+                open++;
+            }
+            else {
+                close++;
+                ans += open;
+            }
+        }
+        s[i] = make_pair(open, close);
     }
 
-    sort(str, str + n, cmp);
+    sort(s, s + n, cmp);
 
-    string s = "";
-
+    int open_sum = 0;
     for (int i = 0; i < n; i++) {
-        s += str[i];
+        int open = s[i].first;
+        int close = s[i].second;
+
+        ans += (long long) open_sum * close;
+
+        open_sum += open;
     }
 
-    cout << getScore(s);
-
+    cout << ans;
 
     return 0;
 }

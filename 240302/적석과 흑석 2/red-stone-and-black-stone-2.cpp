@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <queue>
 using namespace std;
 
 
@@ -20,7 +21,7 @@ int main() {
     for (int i = 0; i < N; i++) {
         int A, B;
         cin >> A >> B;
-        black.push_back(make_pair(B, A));
+        black.push_back(make_pair(A, B));
     }
 
     sort(red.begin(), red.end());
@@ -28,18 +29,24 @@ int main() {
 
     int ans = 0;
     int j = 0;
+    priority_queue<int, vector<int>, greater<int>> pq;
+
     for (int i = 0; i < C; i++) {
-        if (j == N) {
-            break;
-        }
-        if (red[i] >= black[j].second && red[i] <= black[j].first) {
-            ans++;
+        int x = red[i];
+
+        while(j < N && black[j].first <= red[i]) {
+            pq.push(black[i].second);
             j++;
-            continue;
         }
 
-        while(j < N - 1 && black[j].first < red[i]) {
-            j++;
+        if (pq.top() >= red[i]) {
+            pq.pop();
+            ans++;
+        }
+        else {
+            while(!pq.empty()) {
+                pq.pop();
+            }
         }
     }
 

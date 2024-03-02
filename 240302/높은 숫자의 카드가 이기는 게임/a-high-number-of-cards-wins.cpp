@@ -26,12 +26,12 @@ int main() {
         }
     }
 
-    sort(A.begin(), A.end(), greater<int>());
-    sort(B.begin(), B.end(), greater<int>());
+    sort(A.begin(), A.end());
+    sort(B.begin(), B.end());
 
     int j = 0, cnt = 0;
     for (int i = 0; i < N; i++) {
-        if (B[i] < A[j]) {
+        if (B[j] < A[i]) {
             cnt++;
             j++;
         }

@@ -35,18 +35,18 @@ int main() {
         int x = red[i];
 
         while(j < N && black[j].first <= red[i]) {
-            pq.push(black[i].second);
+            pq.push(black[j].second);
             j++;
         }
 
-        if (pq.top() >= red[i]) {
+
+        while(!pq.empty() && pq.top() < red[i]) {
+            pq.pop();
+        }
+
+        if (!pq.empty() && pq.top() >= red[i]) {
             pq.pop();
             ans++;
-        }
-        else {
-            while(!pq.empty()) {
-                pq.pop();
-            }
         }
     }
 

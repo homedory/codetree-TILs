@@ -33,6 +33,10 @@ int main() {
         }
     }
 
+    if (arr[n - 1] == 0) {
+        ans = -1;
+    }
+
     cout << ans;
     return 0;
 }

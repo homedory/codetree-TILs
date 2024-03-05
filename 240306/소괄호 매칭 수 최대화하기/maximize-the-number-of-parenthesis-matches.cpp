@@ -9,7 +9,6 @@ using namespace std;
 int n;
 pair<int,int> s[MAX_N];
 long long ans = 0;
-char arr[MAX_S];
 
 bool cmp(pair<int,int> a, pair<int,int> b) {
     long long sum1 = (long long) a.first * b.second;
@@ -20,13 +19,11 @@ bool cmp(pair<int,int> a, pair<int,int> b) {
 
 int main() {
     
-
     cin >> n;
 
     for (int i = 0; i < n; i++) {
-        cin >> arr;
-
-        string str = arr;
+        string str;
+        cin >> str;
 
         int open = 0, close = 0;
         for (int j = 0; j < (int) str.length(); j++) {

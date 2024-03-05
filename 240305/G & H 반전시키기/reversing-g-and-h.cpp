@@ -13,7 +13,7 @@ int main() {
     cin >> str2;
 
     for (int i = 0; i < N; i++) {
-        if (str1[i] == str2[i]) {
+        if (str1[i] != str2[i]) {
             arr[i + 1] = 1;
         }
     }
@@ -26,6 +26,6 @@ int main() {
     }
 
     cout << cnt;
-    
+
     return 0;
 }

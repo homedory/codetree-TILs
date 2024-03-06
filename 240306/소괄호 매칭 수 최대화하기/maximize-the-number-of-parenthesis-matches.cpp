@@ -14,7 +14,7 @@ bool cmp(pair<int,int> a, pair<int,int> b) {
     long long sum1 = (long long) a.first * b.second;
     long long sum2 = (long long) b.first * a.second;
 
-    return sum1 >= sum2;
+    return sum1 > sum2;
 }
 
 int main() {

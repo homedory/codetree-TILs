@@ -4,7 +4,7 @@
 using namespace std;
 
 #define MAX_N 1005
-#define INF 2e9
+#define INF 1e9
 
 int main() {
     int n, m, A, B;
@@ -55,14 +55,13 @@ int main() {
     }
 
     vector <int> ans;
-    int idx = B;
+    int x = B;
 
-    ans.push_back(idx);
-    while(path[idx] != A) {
-        idx = path[idx];
-        ans.push_back(idx);
+    ans.push_back(x);
+    while(x != A) {
+        x = path[x];
+        ans.push_back(x);
     }
-    ans.push_back(A);
 
     cout << dist[B] << "\n";
     for (int i = ans.size() - 1; i >= 0; i--) {

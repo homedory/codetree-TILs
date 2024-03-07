@@ -23,7 +23,7 @@ int main() {
 
     cin >> A >> B;
 
-    for (int i = 1; i <= m; i++) {
+    for (int i = 1; i <= n; i++) {
         dist[i] = INF;
         path[i] = i;
     }

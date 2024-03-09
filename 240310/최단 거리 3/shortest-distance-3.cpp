@@ -17,8 +17,14 @@ int main() {
     for (int i = 0; i < m; i++) {
         int a, b, c;
         cin >> a >> b >> c;
-        edge[a][b] = c;
-        edge[b][a] = c;
+        if (edge[a][b] == 0) {
+            edge[a][b] = c;
+            edge[b][a] = c;
+        }
+        else {
+            edge[a][b] = min(edge[a][b], c);
+            edge[b][a] = min(edge[b][a], c);
+        }
     }
 
     cin >> A >> B;

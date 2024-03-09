@@ -8,80 +8,71 @@ using namespace std;
 #define INF 2e9
 
 int dist[MAX_N];
+int edge[MAX_N][MAX_N];
+bool visited[MAX_N];
 
 int main() {
     int n, m;
     int A, B;
-    vector <pair<int,int>> edges[MAX_N];
-
+    
     cin >> n >> m;
 
     for (int i = 0; i < m; i++) {
         int start, end, cost;
         cin >> start >> end >> cost;
-        edges[start].push_back(make_pair(end, cost));
-        edges[end].push_back(make_pair(start, cost));
+        edge[start][end] = cost;
+        edge[end][start] = cost;
     }
 
     cin >> A >> B;
 
-    for (int i = 1; i <= n; i++) {
+    for (int i = 0; i <= n; i++) {
         dist[i] = INF;
     }
 
     dist[B] = 0;
 
-    priority_queue<pair<int,int>> pq;
+    for (int i = 1; i <= n; i++) {
+        int min_idx = 0;
+        for (int j = 0; j <= n; j++) {
+            if (visited[j])
+                continue;
 
-    pq.push(make_pair(0, B));
-
-    while(!pq.empty()) {
-        int current_dist = -pq.top().first;
-        int current_vertex = pq.top().second;
-        pq.pop();
-
-        if (dist[current_vertex] != current_dist) {
-            continue;
+            if (dist[min_idx] > dist[j]) {
+                min_idx = j;
+            }
         }
 
-        for (int i = 0; i < edges[current_vertex].size(); i++) {
-            int next_vertex = edges[current_vertex][i].first;
-            int new_dist = current_dist + edges[current_vertex][i].second;
+        visited[min_idx] = true;
 
-            if (dist[next_vertex] > new_dist) {
-                dist[next_vertex] = new_dist;
-                pq.push(make_pair(-new_dist, next_vertex));
+        for (int j = 1; j <= n; j++) {
+            if (edge[min_idx][j] == 0)
+                continue;
+
+            if (dist[j] > edge[min_idx][j] + dist[min_idx]) {
+                dist[j] = edge[min_idx][j] + dist[min_idx];
             }
         }
     }
 
-    for (int i = 1; i <= n; i++) {
-        sort(edges[i].begin(), edges[i].end());
-    }
-
-    int ans = dist[A];
-
-    cout << ans << "\n";
+    cout << dist[A] << "\n";
 
     int x = A;
-    int sum = 0;
+    cout << x << " ";
+    
     while(x != B) {
+        for (int i = 1; i <= n; i++) {
+            if (edge[i][x] == 0)
+                continue;
 
-        for (int i = 0; i < edges[x].size(); i++) {
-            int next_vertex = edges[x][i].first;
-            int d = edges[x][i].second;
-
-            if (sum + d + dist[next_vertex] == ans) {
-                cout << x << " ";
-                x = next_vertex;
-                sum += d;
+            if (dist[x] == edge[i][x] + dist[i]) {
+                x = i;
                 break;
             }
         }
+        cout << x << " ";
     }
-    cout << B;
+    
 
-    
-    
     return 0;
 }

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <algorithm>
 using namespace std;
 
 #define MAX_N 1005
@@ -52,6 +53,10 @@ int main() {
                 pq.push(make_pair(-new_dist, next_vertex));
             }
         }
+    }
+
+    for (int i = 1; i <= n; i++) {
+        sort(edges[i].begin(), edges[i].end());
     }
 
     int ans = dist[A];

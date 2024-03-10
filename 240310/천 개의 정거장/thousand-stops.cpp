@@ -7,6 +7,8 @@ using namespace std;
 #define MAX_N 1005
 #define INF 2e12
 
+pair<long long, int> edge[MAX_N][MAX_N];
+
 int main() {
     int N, A, B;
     vector <tuple<int,long long,int>> edges[MAX_N];
@@ -29,7 +31,12 @@ int main() {
 
         for (int j = 0; j < num_stops; j++) {
             for (int k = j + 1; k < num_stops; k++) {
-                edges[route[j]].push_back(make_tuple(route[k], fair, k - j));
+                if (edge[route[j]][route[k]] == make_pair((long long) 0, (int) 0)) {
+                    edge[route[j]][route[k]] = make_pair(fair, k - j);
+                }
+                else {
+                    edge[route[j]][route[k]] = min(edge[route[j]][route[k]], make_pair(fair, k - j));
+                }
             }
         }
     }
@@ -57,20 +64,22 @@ int main() {
             continue;
         }
 
-        for (int i = 0; i < edges[current_vertex].size(); i++) {
-            int next_vertex, next_time;
-            long long next_cost;
-            tie(next_vertex, next_cost, next_time) = edges[current_vertex][i];
+        for (int i = 1; i <= 1000; i++) {
+            long long next_cost = edge[current_vertex][i].first;
+            int next_time = edge[current_vertex][i].second;
+
+            if (next_cost == 0)
+                continue;
 
             long long new_cost = current_cost + next_cost;
             int new_time = time[current_vertex] + next_time;
-            if (cost[next_vertex] > new_cost) {
-                cost[next_vertex] = new_cost;
-                time[next_vertex] = new_time;
-                pq.push(make_tuple(-new_cost, next_vertex));
+            if (cost[i] > new_cost) {
+                cost[i] = new_cost;
+                time[i] = new_time;
+                pq.push(make_tuple(-new_cost, i));
             }
-            else if (cost[next_vertex] == new_cost && time[next_vertex] > new_time) {
-                time[next_vertex] = new_time;
+            else if (cost[i] == new_cost && time[i] > new_time) {
+                time[i] = new_time;
             }
         }
     }

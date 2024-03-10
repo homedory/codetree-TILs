@@ -8,10 +8,10 @@ using namespace std;
 #define INF 2e12
 
 pair<long long, int> edge[MAX_N][MAX_N];
+bool visited[MAX_N];
 
 int main() {
     int N, A, B;
-    vector <tuple<int,long long,int>> edges[MAX_N];
     long long cost[MAX_N];
     int time[MAX_N];
 
@@ -41,7 +41,7 @@ int main() {
         }
     }
 
-    for (int i = 1; i <= 1000; i++) {
+    for (int i = 0; i <= 1000; i++) {
         cost[i] = INF;
         time[i] = 1e9;
     }
@@ -49,37 +49,33 @@ int main() {
     cost[A] = 0;
     time[A] = 0;
 
-    priority_queue<tuple<long long, int>> pq;
-
-    pq.push(make_tuple(-0, A));
-
-    while(!pq.empty()) {
-        long long current_cost;
-        int current_vertex, current_time;
-        tie(current_cost, current_vertex) = pq.top();
-        current_cost = -current_cost;
-        pq.pop();
-
-        if (cost[current_vertex] != current_cost) {
-            continue;
+    for (int i = 1; i <= 1000; i++) {
+        int min_idx = 0;
+        for (int j = 1; j <= 1000; j++) {
+            if (visited[j])
+                continue;
+            
+            if (cost[min_idx] > cost[j]) {
+                min_idx = j;
+                break;
+            }
         }
 
-        for (int i = 1; i <= 1000; i++) {
-            long long next_cost = edge[current_vertex][i].first;
-            int next_time = edge[current_vertex][i].second;
+        visited[min_idx] = true;
 
-            if (next_cost == 0)
+        for (int j = 1; j <= 1000; j++) {
+            if (edge[min_idx][j] == make_pair((long long) 0, (int) 0)) 
                 continue;
 
-            long long new_cost = current_cost + next_cost;
-            int new_time = time[current_vertex] + next_time;
-            if (cost[i] > new_cost) {
-                cost[i] = new_cost;
-                time[i] = new_time;
-                pq.push(make_tuple(-new_cost, i));
+            long long new_cost = cost[min_idx] + edge[min_idx][j].first;
+            int new_time = time[min_idx] + edge[min_idx][j].second;
+
+            if (cost[j] > new_cost) {
+                cost[j] = new_cost;
+                time[j] = new_time;
             }
-            else if (cost[i] == new_cost && time[i] > new_time) {
-                time[i] = new_time;
+            else if (cost[j] == new_cost && time[j] > new_time) {
+                time[j] = new_time;
             }
         }
     }

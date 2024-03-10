@@ -65,9 +65,9 @@ int main() {
             tie(next_vertex, next_cost, next_time) = edges[current_vertex][i];
 
             long long new_cost = current_cost + next_cost;
-            if (cost[next_vertex] > new_cost) {
+            if (cost[next_vertex] >= new_cost) {
                 cost[next_vertex] = new_cost;
-                pq.push(make_tuple(-new_cost,time[current_vertex] + next_time, next_vertex));
+                pq.push(make_tuple(-new_cost, time[current_vertex] + next_time, next_vertex));
             }
         }
     }

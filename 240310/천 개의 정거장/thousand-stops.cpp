@@ -44,20 +44,19 @@ int main() {
 
     priority_queue<tuple<long long, int, int>> pq;
 
-    pq.push(make_tuple(-0, 0, A));
+    pq.push(make_tuple(-0, -0, A));
 
     while(!pq.empty()) {
         long long current_cost;
         int current_vertex, current_time;
         tie(current_cost, current_time, current_vertex) = pq.top();
         current_cost = -current_cost;
+        current_time = -current_time;
         pq.pop();
 
         if (cost[current_vertex] != current_cost) {
             continue;
         }
-
-        time[current_vertex] = min(time[current_vertex], current_time);
 
         for (int i = 0; i < edges[current_vertex].size(); i++) {
             int next_vertex, next_time;
@@ -65,9 +64,14 @@ int main() {
             tie(next_vertex, next_cost, next_time) = edges[current_vertex][i];
 
             long long new_cost = current_cost + next_cost;
-            if (cost[next_vertex] >= new_cost) {
+            int new_time = current_time + next_time;
+            if (cost[next_vertex] > new_cost) {
                 cost[next_vertex] = new_cost;
-                pq.push(make_tuple(-new_cost, time[current_vertex] + next_time, next_vertex));
+                time[next_vertex] = new_time;
+                pq.push(make_tuple(-new_cost, -new_time, next_vertex));
+            }
+            else if (cost[next_vertex] == new_cost && time[next_vertex] > new_time) {
+                time[next_vertex] = new_time;
             }
         }
     }

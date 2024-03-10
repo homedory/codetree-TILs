@@ -55,9 +55,8 @@ int main() {
             if (visited[j])
                 continue;
             
-            if (cost[min_idx] > cost[j] || (cost[min_idx] == cost[j] && time[min_idx] > time[j])) {
+            if (cost[min_idx] > cost[j]) {
                 min_idx = j;
-                break;
             }
         }
 

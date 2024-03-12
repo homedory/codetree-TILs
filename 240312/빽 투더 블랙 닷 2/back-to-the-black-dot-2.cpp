@@ -4,7 +4,7 @@
 using namespace std;
 
 #define MAX_N 100005
-#define INF 2e9
+#define INF 1e9
 
 int N, M;
 vector <pair<int,int>> edges[MAX_N];
@@ -70,7 +70,12 @@ int main() {
         ans = min(ans, total_dist[i]);
     }
 
-    cout << ans + total_dist[x];
+    if (ans >= INF) {
+        cout << -1;
+    }
+    else {
+        cout << ans + total_dist[x];
+    }
 
     return 0;
 }

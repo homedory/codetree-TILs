@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <algorithm>
 using namespace std;
 
 #define MAX_N 1005
@@ -53,6 +54,10 @@ int main() {
         cin >> a >> b >> c;
         edges[a].push_back(make_pair(b, c));
         edges[b].push_back(make_pair(a, c));
+    }
+
+    for (int i = 1; i <= n; i++) {
+        sort(edges[i].begin(), edges[i].end());
     }
 
 

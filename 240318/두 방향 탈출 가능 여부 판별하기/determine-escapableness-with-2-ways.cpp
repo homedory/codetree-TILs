@@ -38,13 +38,15 @@ int main() {
         }
     }
 
-    visited[1][1] = true;
-    dfs(1, 1);
-
+    if (canGo(1,1)) {
+        visited[1][1] = true;
+        dfs(1, 1);
+    }
+    
     if (visited[n][m])
         cout << 1;
     else
         cout << 0;
-        
+
     return 0;
 }

@@ -24,7 +24,7 @@ int main() {
     int N, M;
 
     cin >> N >> M;
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < M; i++) {
         int vertex1, vertex2;
 
         cin >> vertex1 >> vertex2;
@@ -36,6 +36,6 @@ int main() {
     dfs(1);
 
     cout << visit_cnt;
-    
+
     return 0;
 }

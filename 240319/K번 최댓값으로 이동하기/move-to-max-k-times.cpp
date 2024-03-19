@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <tuple>
 using namespace std;
 
 #define MAX_N 105
@@ -20,9 +21,11 @@ bool inRange(int x, int y) {
     return x > 0 && x <= n && y > 0 && y <= n;
 }
 
+
 bool canGo(int x, int y, int start_number) {
     return inRange(x, y) && !visited[x][y] && board[x][y] < start_number;
 }
+
 
 pair<int,int> findNextPoint(int start_x, int start_y) {
     initVisited();
@@ -33,7 +36,6 @@ pair<int,int> findNextPoint(int start_x, int start_y) {
     int start_number = board[start_x][start_y];
     int possible_next_x = n + 1, possible_next_y = n + 1;
     int max_num = 0;
-
 
     queue<pair<int,int>> point_queue;
 
@@ -56,20 +58,15 @@ pair<int,int> findNextPoint(int start_x, int start_y) {
 
         int current_num = board[current_x][current_y];
 
-        if (max_num < current_num) {
+        auto a = make_tuple(max_num, -possible_next_x, -possible_next_y);
+        auto b = make_tuple(current_num, -current_x, -current_y);
+        
+        if (a < b) {
+            max_num = current_num;
             possible_next_x = current_x;
             possible_next_y = current_y;
-            max_num = current_num;
         }
-        else if (max_num == current_num) {
-            if (current_x < possible_next_x) {
-                possible_next_x = current_x;
-                possible_next_y = current_y;
-            }
-            else if (current_x == possible_next_x) {
-                possible_next_y = min(possible_next_y, current_y);
-            }
-        }
+
 
         for (int dir = 0; dir < 4; dir++) {
             int next_x = current_x + dx[dir];

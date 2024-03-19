@@ -52,13 +52,12 @@ int main() {
             
             visited[i][j] = true;
             int block_size = getBlockSize(i, j);
+            max_block_size = max(max_block_size, block_size);
 
             if (block_size < POP_CRITERIA)
                 continue;
-
+                
             block_cnt++;
-            max_block_size = max(max_block_size, block_size);
-            
         }
     }
 

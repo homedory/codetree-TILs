@@ -57,6 +57,7 @@ int main() {
                     continue;
                 
                 cnt++;
+                visited[i][j] = true;
                 dfs(i, j, k);
             }
         }

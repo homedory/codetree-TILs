@@ -71,7 +71,7 @@ void removeRock(int index, int depth) {
     auto [current_x, current_y] = rock_point[index];
     board[current_x][current_y] = 0;
 
-    if (depth == m - 1) {
+    if (depth == m) {
         int cnt = countMovableBlock();
         max_cnt = max(max_cnt, cnt);
 
@@ -107,8 +107,10 @@ int main() {
         start_point.push_back(make_pair(r, c));
     }
 
+    countMovableBlock();
+
     for (int i = 0; i < total_rock_cnt; i++) {
-        removeRock(i, 0);
+        removeRock(i, 1);
     }
 
     cout << max_cnt;

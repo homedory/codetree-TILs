@@ -79,7 +79,7 @@ void removeRock(int index, int depth) {
         return;
     }
 
-    for (int i = index + 1; i + m - depth < total_rock_cnt; i++) {
+    for (int i = index + 1; i < total_rock_cnt; i++) {
         removeRock(i, depth + 1);
     }
 

@@ -107,7 +107,7 @@ int main() {
         start_point.push_back(make_pair(r, c));
     }
 
-    countMovableBlock();
+    max_cnt = countMovableBlock();
 
     for (int i = 0; i < total_rock_cnt; i++) {
         removeRock(i, 1);

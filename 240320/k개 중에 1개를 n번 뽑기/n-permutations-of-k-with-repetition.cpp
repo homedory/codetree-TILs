@@ -27,7 +27,7 @@ void chooseNumber(int curr_num) {
 }
 
 int main() {
-    cin >> N >> K;
+    cin >> K >> N;
 
     chooseNumber(1);
 

@@ -1,10 +1,11 @@
 #include <iostream>
 #include <string>
+#include <climits>
 using namespace std;
 
 string expression;
 int alphabet_value[6];
-int max_value = 0;
+int max_value = INT_MIN;
 
 int calcExpr() {
     int result = alphabet_value[expression[0] - 'a'];

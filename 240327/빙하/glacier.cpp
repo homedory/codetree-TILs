@@ -16,18 +16,14 @@ bool inRange(int x, int y) {
     return x > 0 && x <= N && y > 0 && y <= M;
 }
 
-void init() {
-    for (int i = 1; i <= N; i++) {
-        fill(reached_time[i], reached_time[i] + M, -1);
-    }
+void findStartArea(int x, int y) {
+    queue <pair<int,int>> start_q;
 
-    queue <pair<int, int>> init_q;
-
-    reached_time[1][1] = 0;
-    init_q.push(make_pair(1,1));
-    while(!init_q.empty()) {
-        auto [curr_x, curr_y] = init_q.front();
-        init_q.pop();
+    reached_time[x][y] = 0;
+    start_q.push(make_pair(x, y));
+    while(!start_q.empty()) {
+        auto [curr_x, curr_y] = start_q.front();
+        start_q.pop();
 
         q.push(make_pair(curr_x, curr_y));
 
@@ -35,13 +31,38 @@ void init() {
             int next_x = curr_x + dx[dir];
             int next_y = curr_y + dy[dir];
 
-            if (!inRange(next_x, next_y) || board[next_x][next_y] == 1 || reached_time[next_x][next_y] >= 0)
-                continue;
-            
-            reached_time[next_x][next_y] = 0;
-            init_q.push(make_pair(next_x, next_y));
+            if (inRange(next_x, next_y) && board[next_x][next_y] == 0 && reached_time[next_x][next_y] == -1) {
+                reached_time[next_x][next_y] = 0;
+                start_q.push(make_pair(next_x, next_y));
+            }
+        }
+    }
+}
+
+void init() {
+    for (int i = 1; i <= N; i++) {
+        fill(reached_time[i], reached_time[i] + M, -1);
+    }
+
+    queue <pair<int, int>> init_q;
+
+    for (int i = 1; i <= M; i++) {
+        if (board[1][i] == 0 && reached_time[1][i] == -1) {
+            findStartArea(1, i);
         }
 
+        if (board[N][i] == 0 && reached_time[N][i] == -1) {
+            findStartArea(N, i);
+        }
+    }
+
+    for (int i = 2; i < N; i++) {
+        if (board[i][1] == 0 && reached_time[i][1] == -1) {
+            findStartArea(i, 1);
+        }
+        if (board[i][M] == 0 && reached_time[i][M] == -1) {
+            findStartArea(i, M);
+        }
     }
 }
 
@@ -117,7 +138,7 @@ int main() {
 
     for (int i = 1; i <= N; i++) {
         for (int j = 1; j <= M; j++) {
-            if (reached_time[i][j] == curr_time)
+            if (reached_time[i][j] == curr_time && board[i][j] == 1)
                 glac_size++;
         }
     }

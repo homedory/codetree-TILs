@@ -41,10 +41,8 @@ void findStartArea(int x, int y) {
 
 void init() {
     for (int i = 1; i <= N; i++) {
-        fill(reached_time[i], reached_time[i] + M, -1);
+        fill(reached_time[i] + 1, reached_time[i] + M + 1, -1);
     }
-
-    queue <pair<int, int>> init_q;
 
     for (int i = 1; i <= M; i++) {
         if (board[1][i] == 0 && reached_time[1][i] == -1) {
@@ -81,7 +79,7 @@ void addNewArea(int x, int y, int t) {
             int next_x = curr_x + dx[dir];
             int next_y = curr_y + dy[dir];
 
-            if (board[next_x][next_y] == 1 || reached_time[next_x][next_y] >= 0)
+            if (!inRange(next_x, next_y) || board[next_x][next_y] == 1 || reached_time[next_x][next_y] >= 0)
                 continue;
             
             reached_time[next_x][next_y] = t;
@@ -143,8 +141,7 @@ int main() {
         }
     }
 
-    cout << curr_time << " " << glac_size;
+    cout << curr_time << " " << glac_size << "\n";
 
-    
     return 0;
 }

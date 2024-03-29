@@ -1,16 +1,17 @@
 #include <iostream>
 #include <queue>
 #include <algorithm>
+#include <vector>
 using namespace std;
 
 #define MAX_N 105
 
-int dist[MAX_N][MAX_N];
+int N, H, M;
 int board[MAX_N][MAX_N];
-int ans[MAX_N][MAX_N];
+int dist[MAX_N][MAX_N];
+vector <pair<int,int>> shelter;
 int dx[4] = {-1, 1, 0, 0};
-int dy[4] = {0, 0 ,-1, 1};
-int N, M, H;
+int dy[4] = {0, 0, -1, 1};
 
 void init() {
     for (int i = 0; i < N; i++) {
@@ -26,29 +27,27 @@ bool canGo(int x, int y) {
     if (!inRange(x, y))
         return false;
     
-    if (dist[x][y] >= 0 || board[x][y] == 1)
+    if (board[x][y] == 1 || dist[x][y] >= 0)
         return false;
-
+    
     return true;
 }
 
-int findShortestDist(int start_x, int start_y) {
+void findShortestDist() {
     init();
 
-    int min_dist = -1;
     queue <pair<int,int>> q;
 
-    dist[start_x][start_y] = 0;
-    q.push(make_pair(start_x, start_y));
+    for (int i = 0; i < M; i++) {
+        auto [x_point, y_point] = shelter[i];
+
+        q.push(make_pair(x_point, y_point));
+        dist[x_point][y_point] = 0;
+    }
 
     while(!q.empty()) {
         auto[curr_x, curr_y] = q.front();
         q.pop();
-
-        if (board[curr_x][curr_y] == 3) {
-            min_dist = dist[curr_x][curr_y];
-            break;
-        }
 
         for (int dir = 0; dir < 4; dir++) {
             int next_x = curr_x + dx[dir];
@@ -61,30 +60,26 @@ int findShortestDist(int start_x, int start_y) {
             q.push(make_pair(next_x, next_y));
         }
     }
-
-    return min_dist;
 }
 
 int main() {
-    cin >> N >> M >> H;
-
+    cin >> N >> H >> M;
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             cin >> board[i][j];
+            if (board[i][j] == 3)
+                shelter.push_back(make_pair(i, j));
         }
     }
 
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            if (board[i][j] == 2) {
-                ans[i][j] = findShortestDist(i, j);
-            }
-        }
-    }
+    findShortestDist();
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            cout << ans[i][j] << " ";
+            if (board[i][j] == 2)
+                cout << dist[i][j] << " ";
+            else
+                cout << 0 << " ";
         }
         cout << "\n";
     }

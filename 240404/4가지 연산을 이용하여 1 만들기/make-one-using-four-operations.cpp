@@ -10,7 +10,10 @@ bool isDuplicated(int num) {
     return nums.find(num) != nums.end();
 }
 
-void addNum(int num, int cnt) {    
+void addNum(int num, int cnt) {
+    if (isDuplicated(num)) 
+        return;
+    
     num_q.push(make_pair(num, cnt));
     nums.insert(num);
 }
@@ -28,22 +31,14 @@ int findMinCalcCnt(int target) {
             break;
         }
 
-        if (curr_num > 1 && !isDuplicated(curr_num - 1)) {
-            addNum(curr_num - 1, curr_cnt + 1);   
+        if (curr_num < target) {
+            addNum(curr_num * 3, curr_cnt + 1);
+            addNum(curr_num * 2, curr_cnt + 1);
+            addNum(curr_num + 1, curr_cnt + 1);
         }
 
-        if (curr_num > target)
-            continue;
-        
-        if (!isDuplicated(curr_num + 1))
-            addNum(curr_num + 1, curr_cnt + 1);    
-        
-        if (!isDuplicated(curr_num * 2))
-            addNum(curr_num * 2, curr_cnt + 1);
-        
-        if (!isDuplicated(curr_num * 3))
-            addNum(curr_num * 3, curr_cnt + 1);
-        
+        if (curr_num > 1)
+            addNum(curr_num - 1, curr_cnt + 1);
     }
 
     return min_cnt;

@@ -9,20 +9,20 @@ bool found_seq = false;
 bool isPossible() {
     int l = seq.size();
     for (int i = 1; i <= l/2; i++) {
-        bool ans = true;
-        int j = i;
-        while(j > 0) {
-            if (seq[l - j] != seq[l - 2 * j]) {
-                ans = false;
+        bool same_seq = true;
+
+        int left = l - 2 * i;
+        int right = l - i;
+        for (int j = 0; j < i; j++) {
+            if (seq[left + j] != seq[right + j]) {
+                same_seq = false;
                 break;
             }
-            j--;
         }
-        if (ans) {
+        if (same_seq) {
             return false;
         }
     }
-
     return true;
 }
 

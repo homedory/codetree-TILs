@@ -25,7 +25,7 @@ void chooseCoin(int idx, int cnt, int prev_x, int prev_y, int cur_dist) {
         return;
     
     int num, cur_x, cur_y;
-    make_tuple(num, cur_x, cur_y) = coin[idx]; 
+    tie(num, cur_x, cur_y) = coin[idx]; 
 
     chooseCoin(idx + 1, cnt + 1, cur_x, cur_y, cur_dist + calcDist(prev_x, prev_y, cur_x, cur_y));
 

@@ -20,7 +20,7 @@ int main() {
         
         if (cnt >= m) {
             ans++;
-            break;
+            continue;
         }
         for (int j = 1; j < n; j++) {
             if (prev_num == num[i][j])
@@ -43,7 +43,7 @@ int main() {
         
         if (cnt >= m) {
             ans++;
-            break;
+            continue;
         }
         for (int j = 1; j < n; j++) {
             if (prev_num == num[j][i])

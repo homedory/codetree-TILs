@@ -8,7 +8,7 @@ int grid[25][25];
 int findMax(int x, int y) {
     int max_cnt = 0;
 
-    for (int k = 1; k <= n; k++) {
+    for (int k = 0; k <= n; k++) {
         int gold_count = 0;
 
         for (int i = -k; i <= k; i++) {

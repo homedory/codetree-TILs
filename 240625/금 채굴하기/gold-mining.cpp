@@ -17,7 +17,7 @@ int findMax(int x, int y) {
             if (nx < 0 || nx > n)
                 continue;
             
-            for (int j = -(k - 1); j <= (k - l); j++) {
+            for (int j = -(k - l); j <= (k - l); j++) {
                 int ny = y + j;
                 if (ny < 0 || ny > n)
                     continue;

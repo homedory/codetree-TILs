@@ -9,10 +9,9 @@ int findMax(int x, int y) {
     int max_cnt = 0;
 
     for (int k = 1; k <= n; k++) {
-        int l = k / 2;
         int gold_count = 0;
 
-        for (int i = -l; i <= l; i++) {
+        for (int i = -k; i <= k; i++) {
             int nx = x + i;
             if (nx < 0 || nx > n)
                 continue;

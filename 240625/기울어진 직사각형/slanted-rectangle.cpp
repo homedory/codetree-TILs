@@ -12,7 +12,7 @@ int calcSum(int x, int y, int height, int width) {
     for (int i = 0; i < height; i++) {
         x += dx[0];
         y += dy[0];
-        if (x < 0 || x > n || y < 0 || y > n)
+        if (x < 0 || x >= n || y < 0 || y >= n)
             return 0;
         
         sum += grid[x][y];
@@ -21,7 +21,7 @@ int calcSum(int x, int y, int height, int width) {
     for (int i = 0; i < width; i++) {
         x += dx[1];
         y += dy[1];
-        if (x < 0 || x > n || y < 0 || y > n)
+        if (x < 0 || x >= n || y < 0 || y >= n)
             return 0;
         
         sum += grid[x][y];
@@ -30,7 +30,7 @@ int calcSum(int x, int y, int height, int width) {
     for (int i = 0; i < height; i++) {
         x += dx[2];
         y += dy[2];
-        if (x < 0 || x > n || y < 0 || y > n)
+        if (x < 0 || x >= n || y < 0 || y >= n)
             return 0;
         
         sum += grid[x][y];
@@ -39,7 +39,7 @@ int calcSum(int x, int y, int height, int width) {
     for (int i = 0; i < width; i++) {
         x += dx[3];
         y += dy[3];
-        if (x < 0 || x > n || y < 0 || y > n)
+        if (x < 0 || x >= n || y < 0 || y >= n)
             return 0;
         
         sum += grid[x][y];
@@ -69,6 +69,6 @@ int main() {
     }
 
     cout << ans;
-    
+
     return 0;
 }

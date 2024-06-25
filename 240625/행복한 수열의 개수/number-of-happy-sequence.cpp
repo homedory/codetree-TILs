@@ -17,6 +17,11 @@ int main() {
     for (int i = 0; i < n; i++) {
         int prev_num = num[i][0];
         int cnt = 1;
+        
+        if (cnt >= m) {
+            ans++;
+            break;
+        }
         for (int j = 1; j < n; j++) {
             if (prev_num == num[i][j])
                 cnt++;
@@ -35,6 +40,11 @@ int main() {
     for (int i = 0; i < n; i++) {
         int prev_num = num[0][i];
         int cnt = 1;
+        
+        if (cnt >= m) {
+            ans++;
+            break;
+        }
         for (int j = 1; j < n; j++) {
             if (prev_num == num[j][i])
                 cnt++;

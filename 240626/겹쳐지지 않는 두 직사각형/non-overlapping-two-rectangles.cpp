@@ -7,8 +7,8 @@ int n, m;
 
 int calcSum(int left, int right, int bottom, int top) {
     int sum = 0;
-    for (int i = left; i <= right; i++) {
-        for (int j = bottom; j <= top; j++) {
+    for (int i = bottom; i <= top; i++) {
+        for (int j = left; j <= right; j++) {
             sum += grid[i][j];
         }
     }

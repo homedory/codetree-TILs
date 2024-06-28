@@ -19,6 +19,9 @@ int main() {
             for (int j = 1; j <= n ; j++) {
                 if (edge[i][k] && edge[k][j])
                     edge[i][j] = 1;
+                
+                if (i == j)
+                    edge[i][j] = 1;
             }
         }
     }
@@ -29,6 +32,6 @@ int main() {
         }
         cout << "\n";
     }
-    
+
     return 0;
 }

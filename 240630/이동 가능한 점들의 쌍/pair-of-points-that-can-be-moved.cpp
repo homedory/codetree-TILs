@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#define INF 1300000000
+#define INF 1050000000
 
 int dist[105][105];
 bool red_included[105][105];

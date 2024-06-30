@@ -3,8 +3,8 @@ using namespace std;
 
 #define INF 1050000000
 
-int dist[105][105];
-bool red_included[105][105];
+int dist[205][205];
+bool red_included[205][205];
 int N, M, P, Q;
 
 

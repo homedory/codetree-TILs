@@ -19,7 +19,7 @@ int main() {
     for (int i = 0; i < m; i++) {
         int start, end, cost;
         cin >> start >> end >> cost;
-        dist[start][end] = cost;
+        dist[start][end] = min(dist[start][end], cost);
     }
 
     for (int k = 1; k <= n; k++) {

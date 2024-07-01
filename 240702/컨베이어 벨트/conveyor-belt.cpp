@@ -16,8 +16,8 @@ int main() {
     for (int i = 0; i < t; i++) {
         temp[i] = conveyor_belt[2*n - t + i];
     }
-    for (int i = 2*n - 1; i >= 0; i--) {
-        conveyor_belt[i + t] = conveyor_belt[i];
+    for (int i = 2*n - 1; i >= t; i--) {
+        conveyor_belt[i] = conveyor_belt[i - t];
     }
     for (int i = 0; i < t; i++) {
         conveyor_belt[i] = temp[i];

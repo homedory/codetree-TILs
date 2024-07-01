@@ -4,7 +4,7 @@ using namespace std;
 int main() {
     int n, t;
     int conveyor_belt[400];
-    int temp[200];
+    int temp[400];
 
     cin >> n >> t;
     for (int i = 0; i < 2*n; i++) {

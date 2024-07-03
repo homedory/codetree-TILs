@@ -7,27 +7,23 @@ int tmp_grid[105][105];
 
 
 void rotate(int r1, int c1, int r2, int c2) {
-    int tmp1 = building[r1][c2];
-    for (int i = c2; i > c1; i--) {
-        building[r1][i] = building[r1][i-1];
-    }
-    
-    int tmp2 = building[r2][c2];
-    for (int i = r2; i > r1 + 1; i--) {
-        building[i][c2] = building[i-1][c2];
-    }
-    building[r1+1][c2] = tmp1;
-
-    tmp1 = building[r2][c1];
-    for (int i = c1; i < c2 - 1; i++) {
-        building[r2][i] = building[r2][i+1];
-    }
-    building[r2][c2-1] = tmp2;
-
-    for (int i = r1; i < r2 - 1; i++) {
+    int tmp = building[r1][c1];
+    for (int i = r1; i < r2; i++) {
         building[i][c1] = building[i+1][c1];
     }
-    building[r2-1][c1] = tmp1;   
+
+    for (int i = c1; i < c2; i++) {
+        building[r2][i] = building[r2][i+1];
+    }
+
+    for (int i = r2; i > r1; i--) {
+        building[i][c2] = building[i-1][c2];
+    }
+
+    for (int i = c2; i > c1 - 1; i--) {
+        building[r1][i] = building[r1][i-1];
+    }
+    building[r1][c1+1] = tmp;
 }
 
 void copy(int r1, int c1, int r2, int c2) {

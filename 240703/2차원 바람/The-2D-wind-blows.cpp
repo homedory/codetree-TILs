@@ -20,7 +20,7 @@ void rotate(int r1, int c1, int r2, int c2) {
         building[i][c2] = building[i-1][c2];
     }
 
-    for (int i = c2; i > c1 - 1; i--) {
+    for (int i = c2; i > c1 + 1; i--) {
         building[r1][i] = building[r1][i-1];
     }
     building[r1][c1+1] = tmp;

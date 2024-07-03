@@ -3,25 +3,37 @@
 using namespace std;
 
 string str;
+int str_len;
 
 int encodingLength() {
     int total_len = 0;
+    int current_len = 1;
     char current_char = str[0];
 
-    for (int i = 1; i < str.length(); i++) {
-        if (str[i] == current_char)
+    for (int i = 1; i < str_len; i++) {
+        if (str[i] == current_char) {
+            current_len++;
             continue;
+        }
         
-        total_len += 2;
+        if (current_len >= 10)
+            total_len += 3;
+        else
+            total_len += 2;
+            
         current_char = str[i];
+        current_len = 1;
     }
-    total_len += 2;
+
+    if (current_len >= 10)
+        total_len += 3;
+    else
+        total_len += 2;
 
     return total_len;
 }
 
 int main() {
-    int str_len;
     int min_len = 20;
 
     cin >> str;

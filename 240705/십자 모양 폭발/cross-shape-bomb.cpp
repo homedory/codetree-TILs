@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int grid[105][105];
+int grid[205][205];
 int n;
 
 void explode(int row, int col) {
@@ -26,7 +26,7 @@ void explode(int row, int col) {
 
 void drop() {
     for (int col = 1; col <= n; col++) {
-        int temp[105];
+        int temp[205];
 
         int temp_pos = n;
 

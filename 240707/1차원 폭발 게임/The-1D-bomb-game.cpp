@@ -52,7 +52,7 @@ int main() {
 
     cout << N << "\n";
 
-    for (int i = 0; i < N; i++) {
+    for (int i = N - 1; i >= 0; i++) {
         cout << arr[i] << "\n";
     }
 

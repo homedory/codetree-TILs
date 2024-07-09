@@ -5,52 +5,46 @@
 
 using namespace std;
 
-long long calcPoint(string str) {
-    long long point = 0;
-    vector <int> count_arr;
+bool compare(pair<int,int> p1, pair<int,int> p2) {
+    long long sum1 = (long long) p1.first * p2.second;
+    long long sum2 = (long long) p1.second * p2.first;
 
-    int prev_cnt = 0;
-    for (int i = str.length() - 1; i >= 0; i--) {
-        if (str[i] == ')') {
-            count_arr.push_back(++prev_cnt);
-        }
-        else {
-            count_arr.push_back(prev_cnt);
-        }
-    }
-    reverse(count_arr.begin(), count_arr.end());
-
-    for (int i = 0; i < str.length(); i++) {
-        if (str[i] == '(')
-            point += count_arr[i];
-    }
-
-    return point;
-}
-
-bool compare(string str1, string str2) {
-    return calcPoint(str1+str2) > calcPoint(str2+str1);
+    return sum1 > sum2;
 }
 
 int main() {
     int n;
-    vector <string> string_arr;
-
+    long long total_point = 0;
+    vector <pair<int,int>> paranthesis_cnt;
     cin >> n;
+
     for (int i = 0; i < n; i++) {
         string str;
         cin >> str;
-        string_arr.push_back(str);
+
+        int open = 0;
+        int close = 0;
+        for (int j = 0; j < str.length(); j++) {
+            if (str[j] == '(')
+                open++;
+            else {
+                close++;
+                total_point += open;
+            }
+        }
+
+        paranthesis_cnt.push_back(make_pair(open, close));
     }
 
-    sort(string_arr.begin(), string_arr.end(), compare);
+    sort(paranthesis_cnt.begin(), paranthesis_cnt.end(), compare);
 
-    string concatenated_str = "";
-    for (int i = 0; i < string_arr.size(); i++) {
-        concatenated_str += string_arr[i];
+    long long prev_open_cnt = 0;
+    for (int i = 0; i < paranthesis_cnt.size(); i++) {
+        total_point += prev_open_cnt * paranthesis_cnt[i].second;
+        prev_open_cnt += paranthesis_cnt[i].first;
     }
-
-    cout << calcPoint(concatenated_str);
+    
+    cout << total_point;
 
     return 0;
 }

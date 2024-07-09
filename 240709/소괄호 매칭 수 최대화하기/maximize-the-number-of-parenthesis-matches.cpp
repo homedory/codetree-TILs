@@ -5,8 +5,8 @@
 
 using namespace std;
 
-int calcPoint(string str) {
-    int point = 0;
+long long calcPoint(string str) {
+    long long point = 0;
     vector <int> count_arr;
 
     int prev_cnt = 0;

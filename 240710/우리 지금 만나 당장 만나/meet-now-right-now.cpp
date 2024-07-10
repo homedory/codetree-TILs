@@ -38,7 +38,7 @@ int main() {
     double left = 0;
     double right = 1000000000;
     double ans = 0;
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 100; i++) {
         double mid = (left + right) / 2;
         if (isPossible(mid)) {
             right = mid;

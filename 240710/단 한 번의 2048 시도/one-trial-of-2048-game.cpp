@@ -121,18 +121,22 @@ int main() {
 
     switch(dir) {
         case 'L':
+            left_shift();
             left_combine();
             left_shift();
             break;
         case 'R':
+            right_shift();
             right_combine();
             right_shift();
             break;
         case 'U':
+            up_shift();
             up_combine();
             up_shift();
             break;
         case 'D':
+            down_shift();
             down_combine();
             down_shift();
             break;

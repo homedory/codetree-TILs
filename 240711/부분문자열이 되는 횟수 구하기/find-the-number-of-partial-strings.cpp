@@ -58,7 +58,8 @@ int main() {
         }
     }
 
-    ans++;
+    if (ans != 0)
+        ans++;
 
     cout << ans;
 

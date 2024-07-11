@@ -42,7 +42,7 @@ int main() {
     }
 
 
-    int left = 0;
+    int left = -1;
     int right = A_length;
     int ans = 0;
     
@@ -58,8 +58,7 @@ int main() {
         }
     }
 
-    if (ans != 0)
-        ans++;
+    ans++;
 
     cout << ans;
 

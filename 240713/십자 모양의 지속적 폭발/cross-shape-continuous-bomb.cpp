@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int grid[105][105];
+int grid[205][205];
 int n;
 
 void explode(int column) {

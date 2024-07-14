@@ -7,7 +7,7 @@ int n;
 bool visited[100005];
 int max_len, max_point;
 
-void init() {
+void initialize() {
     for (int i = 1; i <= n; i++) {
         visited[i] = false;
     }
@@ -42,9 +42,13 @@ int main() {
         edges[vertex2].push_back(make_pair(vertex1, len));
     }
 
+    initialize();
+    visited[1] = true;
     traverse(1, 0);
     int root = max_point;
 
+    initialize();
+    visited[root] = true;
     traverse(root, 0);
     int diameter = max_len;
 

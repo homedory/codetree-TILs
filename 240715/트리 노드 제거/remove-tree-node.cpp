@@ -5,14 +5,16 @@ using namespace std;
 int n;
 int parent[55];
 vector <int> edges[55];
-int root_node, delete_node;
+int root_node, deleted_node;
 int leaf_node_cnt = 0;
 
 void traversal(int node) {
+    if (node == deleted_node)
+        return;
     int child_cnt = 0;
     for (int i = 0; i < edges[node].size(); i++) {
         int next_node = edges[node][i];
-        if (next_node == delete_node)
+        if (next_node == deleted_node)
             continue;
         
         traversal(next_node);
@@ -34,7 +36,7 @@ int main() {
             edges[parent].push_back(i);
     }
     
-    cin >> delete_node;
+    cin >> deleted_node;
 
     traversal(root_node);
 

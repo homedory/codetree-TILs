@@ -3,9 +3,36 @@
 #include <algorithm>
 using namespace std;
 
+int N, K, L;
+vector <int> c_vector;
+
+bool isPossible(int h_index) {
+    long long total_num = K * L;
+    int idx = N - 1;
+
+    int cnt = 0;
+    while(idx >= 0) {
+        if (h_index <= c_vector[idx]) {
+            idx--;
+            cnt++;
+            continue;
+        }
+
+        if (h_index - c_vector[idx] <= K && h_index - c_vector[idx] <= total_num) {
+            total_num -= h_index - c_vector[idx];
+            idx--;
+            cnt++;
+        }
+        else {
+            break;
+        }
+    }
+
+    return h_index <= cnt;
+}
+
 int main() {
-    int N, K, L;
-    vector <int> c_vector;
+    
 
     cin >> N >> K >> L;
     for (int i = 0; i < N; i++) {
@@ -16,28 +43,22 @@ int main() {
 
     sort(c_vector.begin(), c_vector.end());
 
-    int h_index = 0;
-    int idx = N - 1;
-    while (idx >= 0) {
-        if (c_vector[idx] >= h_index + 1) 
-            h_index++;
-        else 
-            break;
-        idx--;
+    int left = 1;
+    int right = N;
+    int ans = 1;
+
+    while(left <= right) {
+        int mid = (left + right) / 2;
+        if (isPossible(mid)) {
+            left = mid + 1;
+            ans = mid;
+        }
+        else {
+            right = mid - 1;
+        }
     }
 
-    long long total_num = K * L;
-    while (idx >= 0) {
-        if (total_num >= (h_index + 1) - c_vector[idx] && h_index + 1 <= c_vector[idx] + K) {
-            h_index++;
-            total_num -= (h_index + 1) - c_vector[idx];
-            idx--;
-        }
-        else 
-            break;
-    }  
-
-    cout << h_index;
+    cout << ans;
 
     return 0;
 }

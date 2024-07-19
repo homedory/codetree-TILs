@@ -19,7 +19,7 @@ void traversal(int node, int dist) {
         leaf_cnt++;
         traversal(next_node, dist + 1);
     }
-
+    
     if (leaf_cnt == 0)
         dist_cnt += dist;
 }
@@ -30,6 +30,8 @@ int main() {
     for (int i = 0; i < N - 1; i++) {
         int node1, node2;
         cin >> node1 >> node2;
+        edge[node1].push_back(node2);
+        edge[node2].push_back(node1);
     }
 
     for (int i = 1; i <= N; i++) {
@@ -38,7 +40,7 @@ int main() {
 
     traversal(1, 0);
 
-    cout << (dist_cnt % 2 == 0) ? 0 : 1;
+    cout << ((dist_cnt % 2 == 0) ? 0 : 1);
 
     return 0;
 }

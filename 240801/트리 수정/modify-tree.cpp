@@ -29,7 +29,7 @@ void traversal(int curr_node, int curr_dist) {
         int next_node = edge[curr_node][i].first;
         int next_dist = edge[curr_node][i].second;
 
-        if (visited[next_node])
+        if (visited[next_node] || path_included[next_node])
             continue;
 
         prev_node[next_node] = curr_node;
@@ -85,9 +85,17 @@ int main() {
     prev_node[start_node] = -1; 
     checkPathNode(end_node);
 
-    int new_edge_dist = find_max_dist_edge();
+    int new_path_dist = 0;
+    for (int node = 0; node < n; node++) {
+        if (!path_included[node])
+            continue;
+        
+        init();
+        traversal(node, 0);
+        new_path_dist = max(new_path_dist, max_dist);
+    }
 
-    int answer = diameter + new_edge_dist;
+    int answer = diameter + new_path_dist;
 
     cout << answer;
 

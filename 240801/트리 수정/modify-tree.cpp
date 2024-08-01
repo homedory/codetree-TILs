@@ -87,9 +87,6 @@ int main() {
 
     int new_path_dist = 0;
     for (int node = 0; node < n; node++) {
-        if (!path_included[node])
-            continue;
-        
         init();
         traversal(node, 0);
         new_path_dist = max(new_path_dist, max_dist);

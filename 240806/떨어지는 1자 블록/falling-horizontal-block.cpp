@@ -23,7 +23,7 @@ int main() {
 
     
     for (int row = 1; row <= n; row++) {
-        if (!rowEmpty(row)) {
+        if (!rowEmpty(row) || row == n) {
             for (int col = k; col < k + m; col++) {
                 grid[row-1][col] = 1;
             }

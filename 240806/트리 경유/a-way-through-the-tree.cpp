@@ -7,12 +7,11 @@ unordered_set<int> checked_node;
 int getBlockingNode(int start_node) {
     int node = start_node;
     int blocking_node = 1;
-    bool blocked = false;
+    
     while(node > 1) {
-        if (checked_node.find(node) != checked_node.end()) {
+        if (checked_node.find(node) != checked_node.end()) 
             blocking_node = node;
-            blocked = true;
-        }
+        
         node /= 2;
     }
 

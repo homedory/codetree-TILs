@@ -37,6 +37,12 @@ void insertFrontRange(Node *node_a, Node *node_b, Node *node_c) {
 
 void printLine(Node *start_point) {
     Node *node = start_point->next;
+
+    if (node == nullptr) {
+        cout <<-1 << "\n";
+        return;
+    }
+
     while(node != nullptr) {
         cout << node->name << " ";
         node = node->next;

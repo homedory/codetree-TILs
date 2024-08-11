@@ -88,7 +88,7 @@ int main() {
                 break;
             case 3:
                 cin >> str_a >> str_b >> str_c;
-                insertFrontRange(person[str_a], person[str_b], person[str_b]);
+                insertFrontRange(person[str_a], person[str_b], person[str_c]);
                 break;
         }
     }

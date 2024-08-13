@@ -1,10 +1,11 @@
 #include <iostream>
 using namespace std;
 
-int n, k;
+int n;
+long long k;
 pair<int,int> child[200005];
 
-int traverse(int node, int order) {
+int traverse(int node, long long order) {
     int child_cnt = 0;
     int next_node;
 

@@ -5,7 +5,7 @@ using namespace std;
 vector <int> edge[100005];
 int dp[100005][2];
 int n;
-bool visited[10005];
+bool visited[100005];
 
 void traversal(int node) {
     visited[node] = true;

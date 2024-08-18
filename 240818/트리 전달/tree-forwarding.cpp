@@ -28,7 +28,7 @@ int main() {
         child[p].push_back(i);
     }
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < m; i++) {
         int num, point;
         cin >> num >> point;
         points[num] = point;
@@ -40,6 +40,6 @@ int main() {
         cout << points[i] << " ";
     }
 
-    
+
     return 0;
 }

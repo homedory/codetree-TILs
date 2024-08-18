@@ -31,7 +31,7 @@ int main() {
     for (int i = 0; i < m; i++) {
         int num, point;
         cin >> num >> point;
-        points[num] = point;
+        points[num] += point;
     }
 
     traversal(1);

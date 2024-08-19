@@ -45,7 +45,7 @@ int main() {
 
     traversal(s);
 
-    int ans = dp[s] - 2;
+    int ans = (dp[s] == 0) ? 0 : dp[s] - 2;
 
     cout << ans;
 

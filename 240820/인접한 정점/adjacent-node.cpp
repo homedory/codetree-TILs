@@ -33,7 +33,7 @@ void traversal(int cur_node) {
         sum_select += dp[child][0];
     }
 
-    if (!child_chosen)
+    if (!child_chosen && min_diff != INT_MAX)
         sum_not_select -= min_diff;
     
     dp[cur_node][0] = sum_not_select;

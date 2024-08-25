@@ -5,14 +5,14 @@ using namespace std;
 #define MAX_N 100005
 
 int n;
-int dp[MAX_N][2][2];
+long long dp[MAX_N][2][2];
 vector<int> edge[MAX_N];
 bool visited[MAX_N];
 
 void traversal(int cur_node) {
     visited[cur_node] = true;
 
-    int min_diff = (int)1e9;
+    long long min_diff = (int)1e9;
     bool selelcted = false;
     bool leaf_node = true;
     for (auto child : edge[cur_node]) {

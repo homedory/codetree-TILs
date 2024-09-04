@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-#define MAX_N 10005
+#define MAX_N 50005
 #define MAX_H 15
 int n;
 int parent[MAX_H+1][MAX_N];

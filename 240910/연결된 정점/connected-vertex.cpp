@@ -17,7 +17,10 @@ int findRoot(int node) {
     if (parent[node] == node)
         return node;
     
-    return parent[node] = findRoot(parent[node]);
+    parent[node] = findRoot(parent[node]);
+    node_count[node] = node_count[parent[node]];
+
+    return parent[node];
 }
 
 void unionNodes(int node1, int node2) {

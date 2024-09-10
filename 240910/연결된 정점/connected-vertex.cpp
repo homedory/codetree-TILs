@@ -25,8 +25,8 @@ void unionNodes(int node1, int node2) {
     int node2_root = findRoot(node2);
 
     if (node1_root == node2_root)
-        continue;
-        
+        return;
+
     parent[node1_root] = node2_root;
     node_count[node2_root] += node_count[node1_root];
 }

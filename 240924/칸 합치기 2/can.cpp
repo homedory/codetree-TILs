@@ -40,7 +40,7 @@ void unionNodes(int node1, int node2) {
     int end = findLeft(right);
     int union_count = -1;
     while(index <= end) {
-        int next_idx = max(index+1, findRight(index));
+        int next_idx = findRight(index) + 1;
         right_uf[index] = right_end;
         left_uf[index] = left_end;
         index = next_idx;

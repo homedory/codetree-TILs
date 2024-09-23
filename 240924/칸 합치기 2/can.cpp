@@ -46,6 +46,7 @@ void unionNodes(int node1, int node2) {
         index = next_idx;
         union_count++;
     }
+    union_count = max(union_count, 0);
     total_count -= union_count;
 
     right_uf[left] = right_end;

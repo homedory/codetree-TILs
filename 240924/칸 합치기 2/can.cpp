@@ -38,18 +38,14 @@ void unionNodes(int node1, int node2) {
 
     int index = findRight(left);
     int end = findLeft(right);
-    int union_count = -1;
-    while(index <= end) {
+    int union_count = 0;
+    while(index < end) {
         int next_idx = findRight(index) + 1;
         right_uf[index] = right_end;
         left_uf[index] = left_end;
         index = next_idx;
         union_count++;
     }
-    right_uf[end] = right_end;
-    left_uf[end] = left_end;
-    
-    union_count = max(union_count, 0);
     total_count -= union_count;
 
     right_uf[left] = right_end;

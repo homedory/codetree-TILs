@@ -4,55 +4,32 @@ using namespace std;
 #define MAX_N 100005
 
 int n, m;
-int left_uf[MAX_N], right_uf[MAX_N];
+int uf[MAX_N];
 int total_count;
 
 void initialize() {
-    for (int i = 1; i <= n; i++) {
-        left_uf[i] = i;
-        right_uf[i] = i;
-    }
+    for (int i = 1; i <= n; i++) 
+        uf[i] = i;
+
     total_count = n;
 }
 
-int findLeft(int node) {
-    if (node == left_uf[node])
-        return node;
+int find(int num) {
+    if (num == uf[num])
+        return num;
     
-    return left_uf[node] = findLeft(left_uf[node]);
+    return uf[num] = find(uf[num]);
 }
 
-int findRight(int node) {
-    if (node == right_uf[node])
-        return node;
-    
-    return right_uf[node] = findRight(right_uf[node]);
-}
+void unionNodes(int from, int to) {
+    int idx = find(from);
 
-void unionNodes(int node1, int node2) {
-    int left = (node1 < node2) ? node1 : node2;
-    int right = (node1 >= node2) ? node1 : node2;
-
-    int left_end = findLeft(left);
-    int right_end = findRight(right);
-
-    int index = findRight(left);
-    int end = findLeft(right);
-    int union_count = 0;
-    while(index < end) {
-        int next_idx = findRight(index) + 1;
-        right_uf[index] = right_end;
-        left_uf[index] = left_end;
-        index = next_idx;
-        union_count++;
+    while(idx < to) {
+        uf[idx] = idx + 1;
+        idx++;
+        total_count--;
+        idx = find(idx);
     }
-    total_count -= union_count;
-
-    right_uf[left] = right_end;
-    right_uf[left_end] = right_end;
-
-    left_uf[right] = left_end;
-    left_uf[right_end] = left_end;
 }
 
 

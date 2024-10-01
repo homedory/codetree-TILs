@@ -46,7 +46,9 @@ int main() {
 
     for (int i = 1; i <= n; i++) {
         for (int j = i+1; j <= n; j++) {
-            double distance = sqrt(pow(x[i]-x[j], 2) + pow(y[i]-y[j], 2));
+            double distance = sqrt(
+                (x[i]-x[j])*(x[i]-x[j]) + (y[i]-y[j])*(y[i]-y[j])
+            );
             edges.push_back({distance, i, j});
         }
     }

@@ -7,7 +7,7 @@ using namespace std;
 #define MAX_N 205
 
 int n, m;
-double x[MAX_N], y[MAX_N];
+long long x[MAX_N], y[MAX_N];
 int uf[MAX_N];
 
 void initialize() {

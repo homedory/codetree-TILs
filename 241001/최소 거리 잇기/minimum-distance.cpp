@@ -23,8 +23,8 @@ int find(int point) {
 }
 
 void unionPoints(int point1, int point2) {
-    int uf1 = uf[point1];
-    int uf2 = uf[point2];
+    int uf1 = find(point1);
+    int uf2 = find(point2);
 
     uf[uf1] = uf2;
 }

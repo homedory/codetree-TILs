@@ -59,9 +59,11 @@ int main() {
     cur_y -= 1;
     int total_time = 0;
     int dir = 0;
-
-    while(total_time < N*N) {
+    int turn_left_cnt = 0;
+    while(total_time < N*N && turn_left_cnt < 4) {
         if (canMove(dir)) {
+            turn_left_cnt = 0;
+
             move(dir);
             total_time++;
 
@@ -77,10 +79,11 @@ int main() {
         }
         else {
             dir = turnLeft(dir);
+            turn_left_cnt++;
         }
     }
 
-    if (total_time >= N*N)
+    if (total_time >= N*N || turn_left_cnt >= 4)
         cout << -1;
     else 
         cout << total_time;

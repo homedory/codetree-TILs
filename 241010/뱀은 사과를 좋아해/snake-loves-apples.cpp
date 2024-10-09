@@ -25,7 +25,7 @@ void move(int dir, int dist) {
         int tail_row = snake_position.back().first;
         int tial_column = snake_position.back().second;
 
-        if (!inRange(next_head_row, next_head_column) || grid[next_head_row][next_head_column] == 1) {
+        if (!inRange(next_head_row, next_head_column)) {
             terminated = true;
             break;
         }
@@ -33,6 +33,11 @@ void move(int dir, int dist) {
         if (grid[next_head_row][next_head_column] != 2) {
             snake_position.pop_back();
             grid[tail_row][tial_column] = 0;
+        }
+
+        if (grid[next_head_row][next_head_column] == 1) {
+            terminated = true;
+            break;
         }
         
         snake_position.push_front(make_pair(next_head_row, next_head_column));

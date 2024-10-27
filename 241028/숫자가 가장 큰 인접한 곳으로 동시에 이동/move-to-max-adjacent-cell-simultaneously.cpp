@@ -21,7 +21,7 @@ void init() {
 void copyTemp() {
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n; j++) {
-            if (count[i][j] > 1)
+            if (temp[i][j] > 1)
                 count[i][j] = 0;
             else 
                 count[i][j] = temp[i][j];

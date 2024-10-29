@@ -72,15 +72,14 @@ void removeBead() {
         if (grid[r][c] > 1)
             exist[i] = false;
     }
-}
 
-void initGrid() {
-    for (int i = 1; i <= N; i++) {
-        for (int j = 1; j <= N; j++) {
-            grid[i][j] = 0;
-        }
+    for (int i = 1; i <= M; i++) {
+        int r = position[i].first;
+        int c = position[i].second;
+        grid[r][c] = 0;
     }
 }
+
 
 int main() {
     cin >> T;
@@ -97,7 +96,6 @@ int main() {
         }
 
         for (int i = 1; i <= 2*N; i++) {
-            initGrid();
             for (int j = 1; j <= M; j++) {
                 if (!exist[j])
                     continue;

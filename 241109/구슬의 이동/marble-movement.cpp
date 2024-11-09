@@ -49,7 +49,7 @@ pair<int,int> move(int num) {
             nr += 1;
         }
         else {
-            nr = (2*N-2) - nr;
+            nr = (2*N-3) - nr;
         }
     }
     else if (nr >= N) {
@@ -69,7 +69,7 @@ pair<int,int> move(int num) {
             nc += 1;
         }
         else {
-            nc = (2*N-2) - nc;
+            nc = (2*N-3) - nc;
         }
     }
     else if (nc >= N) {

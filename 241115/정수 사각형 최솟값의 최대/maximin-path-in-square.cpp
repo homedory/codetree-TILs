@@ -26,11 +26,11 @@ int main() {
 
     for (int i = 2; i <= N; i++) {
         for (int j = 2; j <= N; j++) {
-            dp[i][j] = min(max(dp[i-1][j], dp[1][j-1]), dp[i][j]);
+            dp[i][j] = min(max(dp[i-1][j], dp[i][j-1]), dp[i][j]);
         }
     }
 
     cout << dp[N][N];
-    
+
     return 0;
 }

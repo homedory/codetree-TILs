@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+#define MAX_N 105
+
+int N;
+int dp[MAX_N][MAX_N];
+
+void initialize() {
+    for (int i = 2; i <= N; i++) {
+        dp[1][i] = min(dp[1][i], dp[1][i-1]);
+        dp[i][1] = min(dp[i][1], dp[i-1][1]);
+    }
+}
+
+int main() {
+    cin >> N;
+
+    for (int i = 1; i <= N; i++) {
+        for (int j = 1; j <= N; j++) {
+            cin >> dp[i][j];
+        }
+    }
+
+    initialize();
+
+    for (int i = 2; i <= N; i++) {
+        for (int j = 2; j <= N; j++) {
+            dp[i][j] = min(max(dp[i-1][j], dp[1][j-1]), dp[i][j]);
+        }
+    }
+
+    cout << dp[N][N];
+    
+    return 0;
+}

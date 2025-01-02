@@ -21,7 +21,7 @@ int main() {
             lds.push_back(-arr[i]);
         }
         else {
-            int idx = upper_bound(lds.begin(), lds.end(), -arr[i]) - lds.begin();
+            int idx = lower_bound(lds.begin(), lds.end(), -arr[i]) - lds.begin();
             lds[idx] = -arr[i];
         }
     }

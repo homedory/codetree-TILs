@@ -15,7 +15,7 @@ int main() {
     }
 
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+        for (int j = 0; j < m; j++) {
             for (int x = 0; x <= i; x++) {
                 for (int y = 0; y <= j; y++) {
                     if (x < i && y < j && grid[i][j] > grid[x][y]) 
@@ -29,7 +29,7 @@ int main() {
         }
     }
     
-    cout << dp[n-1][n-1] + 1;
+    cout << dp[n-1][m-1] + 1;
 
     return 0;
 }

@@ -22,7 +22,12 @@ int main() {
         }
     }
 
-    cout << dp[M];
+    int ans = 0;
+
+    for (int i = 0; i <= M; i++)
+        ans = max(ans, dp[i]);
+        
+    cout << ans;
 
     return 0;
 }

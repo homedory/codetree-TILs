@@ -13,15 +13,16 @@ int main() {
     }
 
     for (int i = 1; i <= M; i++) {
+        dp[i] = -1;
         for (int j = 0; j < N; j++) {
-            if (coin[j] > i)
+            if (coin[j] > i || dp[i-coin[j]] == -1)
                 continue;
             
             dp[i] = max(dp[i-coin[j]] + 1, dp[i]);
         }
     }
 
-    cout << (dp[M] == 0 ? -1 : dp[M]);
+    cout << dp[M];
 
     return 0;
 }

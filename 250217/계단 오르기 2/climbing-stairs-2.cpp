@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 
 using namespace std;
 
@@ -12,6 +13,12 @@ int main() {
         cin >> coin[i];
     }
 
+    for (int i = 0; i <= n; i++)
+        for (int j = 0; j <= 3; j++)
+            dp[i][j] = INT_MIN;
+
+    dp[0][0] = 0;
+
     for (int i = 1; i <= n; i++) {
         for (int j = 0; j <= min(i, 3); j++) {
             if (i >= 2)
@@ -24,8 +31,9 @@ int main() {
     }
 
     int ans = 0;
-    for (int i = 0; i <= 3; i++)
+    for (int i = 0; i <= 3; i++) {
         ans = max(ans, dp[n][i]);
+    }
 
     cout << ans;
 

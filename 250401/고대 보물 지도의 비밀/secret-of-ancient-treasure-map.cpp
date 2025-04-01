@@ -36,12 +36,12 @@ int main() {
 
     int ans = 0;
     for (int i = 1; i <= N; ++i) {
-        for (int j = 0; j <= N; ++j) {
+        for (int j = 0; j <= K; ++j) {
             ans = max(ans, dp[i][j]);
         }
     }
 
     cout << ans;
-    
+
     return 0;
 }

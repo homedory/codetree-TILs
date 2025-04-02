@@ -11,13 +11,12 @@ int main() {
     int dp[MAX_N];
 
 
+    cin >> N;
+
     dp[0] = 0;
     for (int i = 1; i <= N; ++i) {
         dp[i] = INT_MIN;
     }
-
-
-    cin >> N;
     
     int len = N << 1;
     for (int i = 0; i < len; ++i) {

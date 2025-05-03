@@ -20,6 +20,7 @@ int main() {
         for (int j = 1; j <= M; j++) {
             dp[i][j] = MIN_VAL;
         }
+        dp[i][1] = num[i];
     }
 
     dp[0][1] = 0;
@@ -44,6 +45,7 @@ int main() {
     for (int i = 1; i <= N; i++) {
         ans = max(dp[i][M], ans);
     }
+
 
     cout << ans;
 

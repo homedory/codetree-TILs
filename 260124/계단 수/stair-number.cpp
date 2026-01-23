@@ -30,6 +30,7 @@ int main() {
     int ans = 0;
     for (int i = 0; i <= 9; i++) {
         ans += dp[N][i];
+        ans %= DIV;
     }
 
     cout << ans;

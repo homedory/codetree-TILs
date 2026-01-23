@@ -2,6 +2,7 @@
 using namespace std;
 
 #define MAX_N 1000
+#define DIV 1000000007
 
 int dp[MAX_N + 1][10];
 
@@ -15,11 +16,14 @@ int main() {
 
     for (int i = 2; i <= N; i++) {
         dp[i][0] += dp[i-1][1];
+        dp[i][0] %= DIV;
         dp[i][9] += dp[i-1][8];
+        dp[i][9] %= DIV;
 
         for (int j = 1; j <= 8; j++) {
             dp[i][j] += dp[i-1][j+1];
             dp[i][j] += dp[i-1][j-1];
+            dp[i][j] %= DIV;
         }
     }
 
